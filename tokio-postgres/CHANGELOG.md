@@ -4,11 +4,13 @@
 
 ### Added
 
-* Added `Client::bind_execute_many` for high-throughput executemany pipelining. The method packs
-  multiple Bind/Execute frame pairs into batched buffers (≈128 KiB per send) and appends a single
-  `Sync` per batch, mirroring asyncpg's `_bind_execute_many` algorithm. This avoids the per-row
-  round-trip cost of calling `execute` in a loop and is the recommended path for bulk INSERT/UPDATE
-  workloads.
+* Added `Client::bind_execute_many` method.
+
+## v0.7.18 - 2026-06-12
+
+### Fixed
+
+* Error instead of panicking on DataRow field/column count mismatch.
 
 ## v0.7.17 - 2026-03-30
 
